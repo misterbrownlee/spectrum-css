@@ -1,9 +1,9 @@
 name: build docs
 
 on:
-  workflow_dispatch:
   push:
-    branches: [$GITHUB_REF]
+    branches: 
+    - brownlee-action-for-docs-on-pr
     
 jobs:
   lets-do-this:
