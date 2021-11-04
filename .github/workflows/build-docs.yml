@@ -3,7 +3,7 @@ name: build docs
 on:
   workflow_dispatch:
   push:
-    branches: [ $default-branch ]
+    branches: [$GITHUB_REF]
     
 jobs:
   lets-do-this:
