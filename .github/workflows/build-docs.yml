@@ -1,6 +1,10 @@
 name: build docs
 
 on:
+  # pull_request
+  # branches:
+  # - main
+  # types: [opened, sychonize, edited, reopened]
   push:
     branches: 
     - brownlee-action-for-docs-on-pr
@@ -12,6 +16,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+      #with:
+       # ref: ${{ github.event.pull_request.head.sha }}
 
     - name: Setup Node.js 
       uses: actions/setup-node@v1
@@ -21,7 +27,16 @@ jobs:
     - name: Build
       run: |
         yarn install
+        gulp buildCombined
+        npm run release:site
         echo it is done
+    
+    - name: Switch to pages
+      run: |
+        git --version
+        git config user.name "GitHub Actionspants"
+        git config user.email "<>"
+        
     
    
     
